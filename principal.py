@@ -1,4 +1,21 @@
+from os import system
 import os
+from sysconfig import sys
+
+
+def plataforma_sistema_operativo():
+    if sys.platform.startswith('win32'):
+        return 'Windows'
+    elif sys.platform.startswith('linux'):
+        return 'Linux'
+
+
+def limpiar_pantalla():
+    if plataforma_sistema_operativo() == 'Windows':
+        return system('cls')
+    else:
+        return system('clear')
+
 
 def menu():
     opcion_menu = {"P": "Perfumería",
@@ -7,32 +24,32 @@ def menu():
                    "S": "Salir"}
     return opcion_menu
 
+
 def inicio():
     """ Turnero """
     opcion = "z"
     while opcion != "s":
-        os.system("cls")
+        limpiar_pantalla()
         opc_menu = menu()
         for opc, area in opc_menu.items():
             print(f"[{opc}] - {area}")
         opcion = input("Seleccione una opción: ").lower()
         if opcion == 'p':
-            os.system("cls")
+            limpiar_pantalla()
             print("Perfumería")
             input()
         elif opcion == 'f':
-            os.system("cls")
+            limpiar_pantalla()
             print("Farmacia")
             input()
         elif opcion == 'c':
-            os.system("cls")
+            limpiar_pantalla()
             print("Cosméticos")
             input()
         elif opcion != 's':
-            os.system("cls")
+            limpiar_pantalla()
             print("Opción incorrecta")
             input()
-
 
 
 inicio()
