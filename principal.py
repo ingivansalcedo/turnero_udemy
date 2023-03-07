@@ -1,6 +1,6 @@
 from os import system
-import os
 from sysconfig import sys
+import numeros
 
 
 def plataforma_sistema_operativo():
@@ -28,6 +28,10 @@ def menu():
 def inicio():
     """ Turnero """
     opcion = "z"
+    sigla_turnero = list(menu().keys())
+    perfumeria = numeros.TurnosFarmacia(sigla_turnero[0])
+    farmacia = numeros.TurnosFarmacia(sigla_turnero[1])
+    cosmeticos = numeros.TurnosFarmacia(sigla_turnero[2])
     while opcion != "s":
         limpiar_pantalla()
         opc_menu = menu()
@@ -36,15 +40,15 @@ def inicio():
         opcion = input("Seleccione una opción: ").lower()
         if opcion == 'p':
             limpiar_pantalla()
-            print("Perfumería")
+            perfumeria.decorar_turno(perfumeria.generar_turno)
             input()
         elif opcion == 'f':
             limpiar_pantalla()
-            print("Farmacia")
+            farmacia.decorar_turno(farmacia.generar_turno)
             input()
         elif opcion == 'c':
             limpiar_pantalla()
-            print("Cosméticos")
+            cosmeticos.decorar_turno(cosmeticos.generar_turno)
             input()
         elif opcion != 's':
             limpiar_pantalla()
