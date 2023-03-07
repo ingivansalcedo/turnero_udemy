@@ -26,18 +26,25 @@ def menu():
 
 
 def inicio():
-    """ Turnero """
+    """ Inicio del programa 'Turnero' para una farmacia """
     opcion = "z"
+    """ Sigla turnero: Lista de las llaves del menú"""
     sigla_turnero = list(menu().keys())
+
+    """Objetos por cada área. Como parametro se envía la letra de cada opcion menu"""
     perfumeria = numeros.TurnosFarmacia(sigla_turnero[0])
     farmacia = numeros.TurnosFarmacia(sigla_turnero[1])
     cosmeticos = numeros.TurnosFarmacia(sigla_turnero[2])
     while opcion != "s":
         limpiar_pantalla()
         opc_menu = menu()
+
+        """Imprimir Menú Opciones"""
         for opc, area in opc_menu.items():
             print(f"[{opc}] - {area}")
         opcion = input("Seleccione una opción: ").lower()
+
+        """Opciones del turnero"""
         if opcion == 'p':
             limpiar_pantalla()
             perfumeria.decorar_turno(perfumeria.generar_turno)
